@@ -10,8 +10,7 @@ class Messages extends MY_Controller
         }
         
         public function sent() {
-            $this->load->model('Model_groups');
-            $my_groups=$this->Model_groups->get_my_all();
+//            $this->load->model('Model_messages');
         }
         
 	public function send() {
@@ -72,7 +71,6 @@ class Messages extends MY_Controller
                     $session=$this->session->userdata('user');
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");
-                    
                     $data=array();
                     $data['date']=date("Y-M-D H:i:s");
                     $data['person_from']=$session['student_id'];
@@ -87,7 +85,26 @@ class Messages extends MY_Controller
                     if ( !($this->Model_validate->validate_student($_POST['send_to_id'])) ) {
                         $data['person_to']=$_POST['send_to_id'];
                     }
-                    
+
+                    if(!empty($_FILES))
+                    {
+                            $this->load->helper('form');
+
+                            $config['upload_path'] = APPPATH . '../uploads/';
+                            $config['max_size']	= '2048';
+                            $config['allowed_types'] = '*';
+                            $config['encrypt_name'] = TRUE; // rename
+
+                            $this->load->library('upload', $config);
+
+                            $this->upload->do_upload();
+                            $errors = $this->upload->display_errors();
+                            if(empty($errors))
+                            {
+                                    $file_data = $this->upload->data();
+                                    $data['file_path'] = 'uploads/' . $file_data['file_name'];
+                            }
+                    }
                     $this->Model_messages->send($data);
 		}
             } 

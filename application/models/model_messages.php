@@ -9,7 +9,8 @@ class Model_messages extends MY_Model
                 'message_to' => $data['person_to'],
                 'message_text' => $data['message'],
                 'message_date'=> $data['date'],
-                'group_id'=>  $data['is_group']
+                'group_id'=>  $data['is_group'],
+				'file_path' => $data['file_path']
              );
             $this->db->insert('messages', $data);
 	}

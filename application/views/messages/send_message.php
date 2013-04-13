@@ -1,5 +1,5 @@
 <?php// echo validation_errors(); ?>
-<form id="send_user" name="send_user" action="/messages/send" method="POST" class="form-horizontal">
+<form id="send_user" name="send_user" action="/messages/send" method="POST" class="form-horizontal" enctype="multipart/form-data">
   <div class="control-group">
     <label class="control-label" for="inputPerson">To</label>
     <div class="controls">
@@ -53,6 +53,7 @@
 			</ul>
 		</div>
 		<?php include_once APPPATH . 'views/templates/templates.html'; ?>
+		<input type="file" name="userfile" />
     </div>
   </div>
 </form>
