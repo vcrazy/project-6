@@ -9,4 +9,13 @@ $(document).ready(function(){
 
 		return false;
 	});
+
+	function message_received(){
+		console.log('message received');
+	}
+
+
+	socket.on('message', function(data){
+		console.log(data);
+	});
 });

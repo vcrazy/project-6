@@ -100,7 +100,8 @@ class Messages extends MY_Controller
 						}
 					}
                     
-                    $this->Model_messages->send($data);
+                    $this->data['sent_message'] = $this->Model_messages->send($data);
+					$this->data['sent_to_user_id'] = $_POST['inputPerson'];
 		}
             }
                 
