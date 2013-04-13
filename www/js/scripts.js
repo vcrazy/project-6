@@ -42,6 +42,9 @@ $(document).ready(function(){
         $('body').on('click', '.button_msg', function () {
             var myperson = $(this).data('sender');
             var mymess = $(this).data('message');
+            $('#m_sender').html(myperson);
+            $('#m_message').html(mymess);
+            $('#m_sender_name').val(myperson);
             $('#addBookDialog').modal('show');
         });
         
