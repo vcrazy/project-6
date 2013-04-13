@@ -20,6 +20,11 @@ class MY_Controller extends CI_Controller
 			$this->load->model('Model_groups');
 			$this->data['all_my_groups'] = $this->Model_groups->get_my_all();
 		}
+
+		$this->data['active'] = array(
+			'controller' => $this->router->fetch_class(),
+			'method' => $this->router->fetch_method()
+		);
 	}
 
 	protected function load_view($view_name = 'default_view')
