@@ -57,6 +57,7 @@
     </div>
   </div>
 </form>
+
 <script type="text/javascript">
     $("#send_user").on("submit", function() { 
         var field_value=$('#inputPerson').val();

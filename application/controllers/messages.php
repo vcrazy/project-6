@@ -101,15 +101,25 @@ class Messages extends MY_Controller
 
                             $this->load->library('upload', $config);
 
-                            $this->upload->do_upload();
-                            $errors = $this->upload->display_errors();
-                            if(empty($errors))
-                            {
-                                    $file_data = $this->upload->data();
-                                    $data['file_path'] = 'uploads/' . $file_data['file_name'];
-                            }
-                    }
-                    $this->Model_messages->send($data);
+						$this->upload->do_upload();
+						$errors = $this->upload->display_errors();
+						if(empty($errors))
+						{
+							$file_data = $this->upload->data();
+							$data['file_path'] = 'uploads/' . $file_data['file_name'];
+						}
+					}
+                    
+					$result = $this->Model_messages->send($data);
+
+					if($result)
+					{
+						$this->data['sent_message'] = $this->Model_messages->send($data);
+						$this->data['sent_to_user_id'] = $data['person_to'];
+						$this->data['sent_message_text'] = $_POST['InputMessage'];
+						$user = $this->session->userdata('user');
+						$this->data['sent_from_names'] = $user['student_names'];
+					}
 		}
             }
             $this->load_view();

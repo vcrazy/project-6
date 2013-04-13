@@ -15,7 +15,8 @@
 		<script src="/js/jquery.min.js" type="text/javascript"></script>
 		<script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
 		<script src="/js/jquery.tmpl.min.js" type="text/javascript"></script>
-		<script src="/js/bootstrap.min.js" stype="text/javascript"></script>
+		<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="/js/bootstrap-modal.js" type="text/javascript"></script>
 		<script src="/js/scripts.js?<?php echo $no_cache; ?>" type="text/javascript"></script>
 	</head>
 	<body>

@@ -10,9 +10,9 @@ class Model_messages extends MY_Model
                 'message_text' => $data['message'],
                 'message_date'=> $data['date'],
                 'group_id'=>  $data['is_group'],
-				'file_path' => $data['file_path']
+				'file_path' => isset($data['file_path']) ? $data['file_path'] : ''
              );
-            $this->db->insert('messages', $data);
+            return $this->db->insert('messages', $data);
 	}
 
 	public function get_group_messages($group_id)
