@@ -3,7 +3,14 @@
   <div class="control-group">
     <label class="control-label" for="inputPerson">To</label>
     <div class="controls">
-      <input type="text" name="inputPerson" id="inputPerson" placeholder="Person">
+      <?php if(isset($users_to_send)): ?>
+       <select name="inputPerson">
+        <option value=""></option>
+        <?php foreach($users_to_send as $row): ?>
+        <option value="<?php echo $row->student_id; ?>"><?php echo $row->student_names; ?></option>
+        <?php endforeach; ?>
+        </select>
+      <?php endif; ?>
     </div>
   </div>
   <div class="control-group">

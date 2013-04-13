@@ -11,6 +11,10 @@ class Messages extends MY_Controller
         
 	public function send()
 	{
+            $user=array(2);
+            $this->load->model('Model_user');
+            $this->data['users_to_send']=$this->Model_user->load_users($user);
+            
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/send_message';
             
@@ -31,9 +35,8 @@ class Messages extends MY_Controller
 		{
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");                    
-
-                    $data=array();
-                    $data['date']=$date=date("Y-M-D H:i:s");
+                    
+                    $data['date']=date("Y-M-D H:i:s");
                     
                     $data['person_from']=1;
                     $data['is_group']=0;
