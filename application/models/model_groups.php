@@ -69,6 +69,6 @@ class Model_groups extends MY_Model
 
 	public function get_my_all()
 	{
-		return array_merge($this->get_my(), $this->get_my_special(), $this->get_special());
+		return array_merge((array)$this->get_my(), (array)$this->get_my_special(), (array)$this->get_special());
 	}
 }
