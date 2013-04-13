@@ -1,11 +1,17 @@
-<?php// echo validation_errors(); ?>
+<?php if ( isset($return_mess) ): ?>
+  <?php if ($return_mess==1): ?>
+      <div class="alert alert-success"> Съобщението бе успешно изпратено</div>
+  <?php else: ?>
+      <div class="alert alert-error">И двете полета са задължителни</div>
+  <?php endif; ?>
+<?php endif; ?>
 <form id="send_user" name="send_user" action="/messages/send" method="POST" class="form-horizontal" enctype="multipart/form-data">
   <div class="control-group">
     <label class="control-label" for="inputPerson">До</label>
     <div class="controls">
       <?php if(isset($users_to_send)): ?>
         <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4" value="<?php echo isset($preselect_user_names) ? htmlspecialchars($preselect_user_names) : ''; ?>" />
-        <input type="hidden" id="send_to_id" name="send_to_id" value=""/>
+        <input type="hidden" id="send_to_id" name="send_to_id" value="<?php if (isset($inpuPerson_user)) { echo $inpuPerson_user; } ?>"/>
         <input type="hidden" id="is_it_group" name="is_it_group" value=""/>
         <script type="text/javascript">
             var jsonString = '<?php echo $users_to_send?>';
@@ -33,7 +39,7 @@
   <div class="control-group">
     <label class="control-label" for="InputMessage">Съобщение</label>
     <div class="controls">
-        <textarea id="InputMessage" name="InputMessage" placeholder="Съобщение" rows="3" style="width: 400px;"></textarea>
+        <textarea id="InputMessage" name="InputMessage" placeholder="Съобщение" rows="3" style="width: 400px;"><?php if (isset($inputMessage_message)) {echo $inputMessage_message; } ?></textarea>
     </div>
   </div>
   <div class="control-group">

@@ -29,6 +29,20 @@ class Messages extends MY_Controller
             $this->load_view();
         }
         
+        public function make_read() {
+            if ( isset($_POST) ) {
+                $message_id=json_decode($_POST['message_id']);
+                $this->load->model('Model_messages');
+//                $this->Model_messages->check_if_to($message_id);
+                $exists_m=$this->Model_messages->check_if_to($message_id);
+                if ( !empty($exists_m) ) {
+                    $this->data['done']=$this->Model_messages->make_read_message($message_id);
+                    return 1;
+                }
+                return 0;
+            }
+        }
+        
         public function read() {
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/read_messages';
@@ -99,7 +113,14 @@ class Messages extends MY_Controller
                 $this->form_validation->set_rules('send_to_id', 'Message', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
+                    if ( isset($_POST['inputPerson']) ) {
+                        $this->data['inpuPerson_user']=$_POST['inputPerson'];
+                    }
+                    if ( isset($_POST['InputMessage'])) {
+                        $this->data['inputMessage_message']=$_POST['InputMessage'];
+                    }
                     
+                    $this->data['return_mess']=0;
 		}
 		else {
                     $session=$this->session->userdata('user');
@@ -178,6 +199,7 @@ class Messages extends MY_Controller
                                             )
                                     )
                             );
+                       $this->data['return_mess']=1;
                     }
 		}
             }

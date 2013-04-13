@@ -39,19 +39,49 @@ $(document).ready(function(){
 		$('.modal, .modal_rt').hide();
 	});
 
-	$('body').on('click', '.button_msg', function () {
-		var fromperson = $(this).data('sender');
-		var tocperson = $(this).data('receiver');
-
-		var mymess = $(this).data('message');
-		var mymessid = $(this).data('message_id');
-
-		$('#m_sender').html(fromperson);
-		$('#m_receiver').html(tocperson);
-		$('#m_message').html(mymess);
-		$('#m_sender_name').val(fromperson);
-		$('#addBookDialog').modal('show');
-	});
+        $('body').on('click', '.button_msg', function () {
+            var fromperson = $(this).data('sender');
+            var tocperson = $(this).data('receiver');
+            
+            var mymess = $(this).data('message');
+            var mymessid = $(this).data('message_id');
+            
+            if ( mymessid ) {
+                $.ajax({
+                    url: "/messages/make_read",
+                    type: "post",
+                    data: {"message_id": mymessid},
+//                    success: function(){
+//                        alert("success");
+//                         $("#result").html('submitted successfully');
+//                    },
+//                    error:function(){
+//                        alert("failure");
+//                        $("#result").html('there is error while submit');
+//                    }   
+                  }); 
+            }
+            
+            $('#m_sender').html(fromperson);
+            $('#m_receiver').html(tocperson);
+            $('#m_message').html(mymess);
+            $('#m_sender_name').val(fromperson);
+            $('#addBookDialog').modal('show');
+        });
+        
+//	$('body').on('click', '.button_msg', function () {
+//		var fromperson = $(this).data('sender');
+//		var tocperson = $(this).data('receiver');
+//
+//		var mymess = $(this).data('message');
+//		var mymessid = $(this).data('message_id');
+//
+//		$('#m_sender').html(fromperson);
+//		$('#m_receiver').html(tocperson);
+//		$('#m_message').html(mymess);
+//		$('#m_sender_name').val(fromperson);
+//		$('#addBookDialog').modal('show');
+//	});
 
 	function enterWebPage($time){
 		setTimeout(function(){
@@ -84,4 +114,5 @@ $(document).ready(function(){
 		$.cookie('logo_shownaa6', 1);
 		revealLogo();
 	}
+>>>>>>> 7d1866badcbf9cf7b5140d70443a2f31a9d57e27
 });

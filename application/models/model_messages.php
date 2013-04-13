@@ -41,6 +41,27 @@ class Model_messages extends MY_Model
 		return $this->results($query);
 	}
         
+        public function check_if_to($message_id) {
+            
+            $session=$this->session->userdata('user');
+            $user_id=$session['student_id'];
+            
+            $this->db->select('*');
+            $this->db->from('messages');
+            $this->db->where('message_to',$user_id);
+            $this->db->where('message_id',$message_id);
+            $query = $this->db->get();
+            
+            return $this->results($query);
+        }
+        
+        public function make_read_message($mess_id) {
+            $data = array('message_is_read' => 1);
+
+            $this->db->where('message_id', $mess_id);
+            $this->db->update('messages', $data); 
+        }
+        
         public function get_specialty_adm_messages() {
             $this->db->select('students.student_names,messages.*');
             $this->db->from('messages');

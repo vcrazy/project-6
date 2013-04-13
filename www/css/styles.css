@@ -23,6 +23,10 @@ body {
     margin-top:30px;
 }
 
+.margin_bottom {
+    margin-bottom:100px;
+}
+
 .menu_bottom_border {
     border-bottom: 1px solid #e5e5e5 !important;
     -webkit-border-radius: 4px !important;
