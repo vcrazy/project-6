@@ -1,22 +1,31 @@
 <?php// echo validation_errors(); ?>
-<form name="send_user" action="/messages/send" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<form id="send_user" name="send_user" action="/messages/send" method="POST" class="form-horizontal" enctype="multipart/form-data">
   <div class="control-group">
     <label class="control-label" for="inputPerson">To</label>
     <div class="controls">
       <?php if(isset($users_to_send)): ?>
         <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4"/>
+        <input type="hidden" id="send_to_id" name="send_to_id" value=""/>
+        <input type="hidden" id="is_it_group" name="is_it_group" value=""/>
         <script type="text/javascript">
             var jsonString = '<?php echo $users_to_send?>';
             var jsonObj = $.parseJSON(jsonString);
             var sourceArr = [];
+            var asoc_arr=new Array();
 
             for (var i = 0; i < jsonObj.length; i++) {
                 sourceArr.push(jsonObj[i].label);
+                var is_it_group=0;
+                if ( jsonObj[i].label.match(/^@/) ) {
+                    is_it_group=1;
+                }
+                asoc_arr[jsonObj[i].label]=[jsonObj[i].value,is_it_group];
             }
-
+            
             $("#inputPerson").typeahead({
                 source: sourceArr
             });
+            
         </script>
       <?php endif; ?>
     </div>
@@ -48,3 +57,13 @@
     </div>
   </div>
 </form>
+
+<script type="text/javascript">
+    $("#send_user").on("submit", function() { 
+        var field_value=$('#inputPerson').val();
+        if (asoc_arr[field_value]) {
+            $('#send_to_id').val(asoc_arr[field_value][0]);
+            $('#is_it_group').val(asoc_arr[field_value][1]);
+        }
+    });
+</script>

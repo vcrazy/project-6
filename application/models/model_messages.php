@@ -24,4 +24,16 @@ class Model_messages extends MY_Model
 
 		return $this->results($query);
 	}
+        
+        public function get_sent_messages()
+        {
+            $session=$this->session->userdata('user');
+            $user=$session['student_id'];
+            $this->db->select('*');
+            $this->db->from('messages');
+            $this->db->where('student_id', $user);
+            $query = $this->db->get();
+
+            return $this->results($query);
+        }
 }

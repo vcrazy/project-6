@@ -11,7 +11,7 @@
 					sent_to_user_id = <?php echo isset($sent_to_user_id) && $sent_to_user_id ? $sent_to_user_id : 0; ?>;
 
 				if(sent_message && sent_to_user_id){
-					socket.emit('message', {to_user: sent_to_user_id, text: 'test text', from_user: 'Ivan'});
+					socket.emit('message', {to_user: sent_to_user_id, text: <?php echo $sent_to_user_id; ?>, from_user: <?php echo $sent_from_names; ?>});
 				}
 			</script>
 		<?php endif; ?>
