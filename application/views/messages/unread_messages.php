@@ -6,6 +6,7 @@
             <th>До</th>
             <th>Съобщение</th>
             <th>Дата</th>
+            <th>Файл</th>
         </tr>
     </thead>
     <tbody>
@@ -27,12 +28,13 @@
             <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...';?></td>
             <td><?php echo $message['message_date'];?></td>
             <?php endif; ?>
+            <td><?php if (!empty($message['file_path'])) {echo '<a href="#"><img src="/img/appbar.disk.download.png" alt="Има прикачен файл"/></a>';}?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 <?php else: ?>
 <div class="alert alert-info">
-    Вие нямате непрочетени съобщения !
+    Вие нямате прочетени съобщения !
 </div>
 <?php endif; ?>
