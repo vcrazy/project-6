@@ -23,7 +23,8 @@ class MY_Controller extends CI_Controller
 
 		$this->data['active'] = array(
 			'controller' => $this->router->fetch_class(),
-			'method' => $this->router->fetch_method()
+			'method' => $this->router->fetch_method(),
+			'param' => $this->uri->segment(2)
 		);
 	}
 

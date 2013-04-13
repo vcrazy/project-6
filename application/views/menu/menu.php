@@ -5,13 +5,13 @@
         Съобщения
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapseOne" class="accordion-body collapse <?php if($active['controller'] != 'groups' && $active['controller'] != 'specialties') echo 'in'; ?>">
       <div class="accordion-inner remove_border">
         <ul class="nav nav-list">
-            <li <?php if($active['controller'] == 'messages' && $active['method'] == '') echo 'class="active"'; ?>><a href="/messages/send">Изпрати</a></li>
-            <li><a href="/messages/inbox">Непрочетени</a></li>
-            <li><a href="/messages/read">Прочетени</a></li>
-            <li><a href="/messages/sent">Изпратени</a></li>
+            <li <?php if($active['controller'] == 'messages' && $active['method'] == 'send') echo 'class="active"'; ?>><a href="/messages/send">Изпрати</a></li>
+            <li <?php if($active['controller'] == 'messages' && $active['method'] == 'inbox') echo 'class="active"'; ?>><a href="/messages/inbox">Непрочетени</a></li>
+            <li <?php if($active['controller'] == 'messages' && $active['method'] == 'read') echo 'class="active"'; ?>><a href="/messages/read">Прочетени</a></li>
+            <li <?php if($active['controller'] == 'messages' && $active['method'] == 'sent') echo 'class="active"'; ?>><a href="/messages/sent">Изпратени</a></li>
           </ul>
       </div>
     </div>
@@ -22,21 +22,23 @@
         Групи
       </a>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse">
+    <div id="collapseTwo" class="accordion-body collapse <?php if($active['controller'] == 'groups' || $active['controller'] == 'specialties') echo 'in'; ?>">
       <div class="accordion-inner remove_border">
        <ul class="nav nav-list">
 			<?php foreach($all_my_groups as $my_group): ?>
-				<li>
-					<?php if(isset($my_group['group_id'])): ?>
+				<?php if(isset($my_group['group_id'])): ?>
+					<li <?php if($active['controller'] == 'groups' && $active['param'] == $my_group['group_id']) echo 'class="active"'; ?>>
 						<a href="/groups/<?php echo $my_group['group_id']; ?>">
 							<?php echo $my_group['group_subject']; ?>
 						</a>
+					</li>
 					<?php else: ?>
+					<li <?php if($active['controller'] == 'specialties' && $active['param'] == $my_group['specialty_id']) echo 'class="active"'; ?>>
 						<a href="/specialties/<?php echo $my_group['specialty_id']; ?>">
 							<?php echo $my_group['specialty_name']; ?>
 						</a>
-					<?php endif; ?>
-				</li>
+					</li>
+				<?php endif; ?>
 			<?php endforeach; ?>
         </ul>
       </div>
