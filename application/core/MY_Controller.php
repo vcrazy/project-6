@@ -12,13 +12,14 @@ class MY_Controller extends CI_Controller
 	private function _set_up()
 	{
 		$this->data['no_cache'] = microtime(TRUE);
-		$this->data['menu'] = "menu/menu";
+		$this->data['menu'] = "menu/menu-not-logged";
 		$this->data['content_title'] = '6 Messenger';
 
 		if($this->session->userdata('is_logged'))
 		{
 			$this->load->model('Model_groups');
 			$this->data['all_my_groups'] = $this->Model_groups->get_my_all();
+			$this->data['menu'] = "menu/menu";
 		}
 
 		$this->data['active'] = array(

@@ -102,3 +102,30 @@ body {
 .heading-groups {
 	background: url('/img/heading-groups.png') no-repeat !important;
 }
+
+.control-group input[type="text"], .control-group textarea {
+	border-color: #999 !important;
+}
+
+.dataTables_length {
+	display: none;
+}
+
+.content_container {
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#header_holder {
+	margin: 0 auto;
+	width: 1130px;
+	text-align: right;
+}
+
+#header_links {
+	padding: 5px 15px;
+}
+
+#header_links a, #header_links a:visited {
+	color: white;
+}
