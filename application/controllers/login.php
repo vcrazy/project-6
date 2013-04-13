@@ -18,7 +18,7 @@ class Login extends MY_Controller
 		if(!$this->Model_facebook->is_logged())
 		{
 			// go log in
-			header("Location: " . $this->Model_facebook->get_login_url());
+			header("Location: " . $this->Model_facebook->get_login_url() . $this->Model_facebook->get_scope());
 		}
 		else // if logged in FB
 		{

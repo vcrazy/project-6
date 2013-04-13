@@ -3,6 +3,7 @@
 class Model_facebook extends MY_Model
 {
 	private $fb;
+	private $scope = 'email'; // comma-separated
 
 	public function __construct()
 	{
@@ -59,5 +60,27 @@ class Model_facebook extends MY_Model
 	public function destroy()
 	{
 		$this->fb->destroySession();
+	}
+
+	public function api($params)
+	{
+		if(is_array($params))
+		{
+			return call_user_func_array(array($this->fb, 'api'), $params);
+		}
+		else
+		{
+			return call_user_func(array($this->fb, 'api'), $params);
+		}
+	}
+
+	public function get_scope()
+	{
+		return '&scope=' . $this->scope;
+	}
+
+	public function get_redirect_url($url)
+	{
+		return '&redirect_url=' . $url;
 	}
 }
