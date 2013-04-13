@@ -12,6 +12,15 @@ class Specialties extends MY_Controller
 
 	public function specialty($sp_id)
 	{
+		if($sp_id)
+		{
+			$this->data['content_title'] = 'Специалности';
+		}
+		else
+		{
+			$this->data['content_title'] = 'Администрация';
+		}
+
 		$group = $this->Model_specialties->get($sp_id);
 		$messages = $this->Model_messages->get_specialty_messages($sp_id);
 

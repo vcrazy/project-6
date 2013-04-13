@@ -5,8 +5,7 @@
             <div class="span3 span-fixed-sidebar white_back"><?php include($menu. '.php'); ?></div>
             <div class="span9">
                 <div class="contenta-header">
-                    <p>Групи</p>
-                    <?php# echo $content_title; ?>
+                    <p><?php echo $content_title; ?></p>
                 </div>
                 
                 <div class="white_back">

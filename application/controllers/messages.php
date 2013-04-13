@@ -10,6 +10,8 @@ class Messages extends MY_Controller
         }
         
         public function sent() {
+			$this->data['content_title'] = 'Съобщения';
+
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/sent_messages';
             $this->load->model('Model_messages');
@@ -18,6 +20,8 @@ class Messages extends MY_Controller
         }
         
         public function unread() {
+			$this->data['content_title'] = 'Съобщения';
+
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/unread_messages';
             $this->load->model('Model_messages');
@@ -26,6 +30,8 @@ class Messages extends MY_Controller
         }
         
         public function inbox() {
+			$this->data['content_title'] = 'Съобщения';
+
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/new_messages';
             $this->load->model('Model_messages');
@@ -34,6 +40,8 @@ class Messages extends MY_Controller
         }
         
 	public function send() {
+			$this->data['content_title'] = 'Съобщения';
+
             $my_groups=array();
             $this->load->model('Model_groups');
             $my_groups=$this->Model_groups->get_my_all();
