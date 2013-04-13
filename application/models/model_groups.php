@@ -27,7 +27,6 @@ class Model_groups extends MY_Model
 
 	public function get_my_group_ids()
 	{
-		
 		$user = $this->session->userdata('user');
 
 		$this->db->select('group_id');

@@ -29,7 +29,7 @@ class Model_user extends MY_Model
 
 	public function login($fb_user_id)
 	{
-		$this->db->select('student_id');
+		$this->db->select('*');
 		$this->db->from('students');
 		$this->db->where('student_fb_id', $fb_user_id);
 		$this->db->limit(1);

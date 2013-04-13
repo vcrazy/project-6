@@ -18,6 +18,6 @@ class Groups extends MY_Controller
 //		var_dump($group);
 //		var_dump($messages);
 
-		$this->load_view('');
+		$this->load_view();
 	}
 }
