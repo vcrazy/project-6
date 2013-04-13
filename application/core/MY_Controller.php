@@ -12,6 +12,13 @@ class MY_Controller extends CI_Controller
 	private function _set_up()
 	{
 		$this->data['no_cache'] = microtime(TRUE);
+		$this->data['menu'] = "menu/menu";
+
+		if($this->session->userdata('is_logged'))
+		{
+			$this->load->model('Model_groups');
+			$this->data['all_my_groups'] = $this->Model_groups->get_my_all();
+		}
 	}
 
 	protected function load_view($view_name = 'default_view')

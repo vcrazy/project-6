@@ -59,12 +59,12 @@ class Model_groups extends MY_Model
 
 	public function get_special()
 	{
-		return array(
+		return array(array(
 			'specialty_id' => 0,
 			'specialty_name' => 'Администрация',
 			'specialty_degree' => '',
 			'specialty_active' => 1
-		);
+		));
 	}
 
 	public function get_my_all()

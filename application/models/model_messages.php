@@ -25,6 +25,25 @@ class Model_messages extends MY_Model
 
 		return $this->results($query);
 	}
+
+	public function get_specialty_messages($sp_id)
+	{
+		$this->db->select('*');
+		$this->db->from('messages');
+		if(!$sp_id) // to administration
+		{
+			$this->db->where('message_to', 0);
+			$this->db->where('group_id', 0);
+			$this->db->where('speciality_id', 0);
+		}
+		else
+		{
+			$this->db->where('speciality_id', $sp_id);
+		}
+		$query = $this->db->get();
+
+		return $this->results($query);
+	}
         
         public function get_sent_messages()
         {
