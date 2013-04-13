@@ -3,10 +3,22 @@
 class Messages extends MY_Controller
 {
         protected $data;
+
+		public function __construct()
+		{
+			parent::__construct();
+
+			$this->load->model('Model_messages');
+		}
         
         public function index() {
+			$this->data['content_title'] = 'Последни съобщения';
             $this->data['menu'] = "menu/menu";
-            $this->data['view'] = 'home_page/home_page_view';
+            $this->data['view'] = 'messages/last_messages';
+
+			$this->data['last_messages'] = $this->Model_messages->get_last_messages();
+
+			$this->load_view();
         }
         
         public function sent() {
@@ -14,7 +26,6 @@ class Messages extends MY_Controller
 
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/sent_messages';
-            $this->load->model('Model_messages');
             $this->data['all_sent_messages']=$this->Model_messages->get_sent_messages();
             $this->load_view();
         }
@@ -22,7 +33,6 @@ class Messages extends MY_Controller
         public function read() {
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/read_messages';
-            $this->load->model('Model_messages');
             $this->data['all_unread_messages']=$this->Model_messages->get_read_messages();
             $this->load_view();
         }
@@ -32,7 +42,6 @@ class Messages extends MY_Controller
 
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/new_messages';
-            $this->load->model('Model_messages');
             $this->data['all_new_messages']=$this->Model_messages->get_new_messages();
             $this->load_view();
         }

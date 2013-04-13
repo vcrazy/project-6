@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "home_page";
+$route['default_controller'] = "messages";
 $route['404_override'] = '';
 
 $route['groups/(:num)'] = "groups/group/$1";

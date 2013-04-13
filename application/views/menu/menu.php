@@ -8,6 +8,7 @@
     <div id="collapseOne" class="accordion-body collapse <?php if($active['controller'] != 'groups' && $active['controller'] != 'specialties') echo 'in'; ?>">
       <div class="accordion-inner">
         <ul class="nav nav-list messages">
+			<li <?php if($active['controller'] == 'messages' && $active['method'] == 'index') echo 'class="active"'; ?>><a href="/messages/send">Последни</a></li>
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'send') echo 'class="active"'; ?>><a href="/messages/send">Изпрати</a></li>
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'inbox') echo 'class="active"'; ?>><a href="/messages/inbox">Непрочетени</a></li>
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'read') echo 'class="active"'; ?>><a href="/messages/read">Прочетени</a></li>
