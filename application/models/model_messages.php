@@ -13,4 +13,14 @@ class Model_messages extends MY_Model
              );
             $this->db->insert('messages', $data);
 	}
+
+	public function get_group_messages($group_id)
+	{
+		$this->db->select('*');
+		$this->db->from('messages');
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get();
+
+		return $this->results($query);
+	}
 }

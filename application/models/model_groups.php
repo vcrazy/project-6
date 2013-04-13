@@ -15,14 +15,7 @@ class Model_groups extends MY_Model
 
 	public function get_my()
 	{
-		$user = $this->session->userdata('user');
-
-		$this->db->select('group_id');
-		$this->db->from('group_students');
-		$this->db->where('student_id', $user['student_id']);
-		$query = $this->db->get();
-
-		$group_ids = $this->single($query, 'group_id');
+		$group_ids = $this->get_my_group_ids();
 
 		$this->db->select('*');
 		$this->db->from('groups');
@@ -30,6 +23,19 @@ class Model_groups extends MY_Model
 		$query = $this->db->get();
 
 		return $this->results($query);
+	}
+
+	public function get_my_group_ids()
+	{
+		
+		$user = $this->session->userdata('user');
+
+		$this->db->select('group_id');
+		$this->db->from('group_students');
+		$this->db->where('student_id', $user['student_id']);
+		$query = $this->db->get();
+
+		return $this->single($query, 'group_id');
 	}
 
 	public function get_my_special()
