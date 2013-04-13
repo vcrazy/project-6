@@ -110,9 +110,8 @@ $(document).ready(function(){
 		}, 3700);
 	}
 
-	if(typeof $.cookie('logo_shownaa6') == 'undefined'){
-		$.cookie('logo_shownaa6', 1);
+	if(typeof $.cookie('logo_shownaa6111') == 'undefined'){
+		$.cookie('logo_shownaa6111', 1);
 		revealLogo();
 	}
->>>>>>> 7d1866badcbf9cf7b5140d70443a2f31a9d57e27
 });

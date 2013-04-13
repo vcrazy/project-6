@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		
+		function enterWebPage($time)
+		{
+			setTimeout(function(){
+				
+				$("#bgr-transition").show();
+				$("#magenta").hide();
+				$("#cyan").hide();
+				$("#yellow").hide();
+				$("#green").hide();
+				$("#bgr").hide();
+				$("#main").animate({width: '40980px', height: '23040px', top: '-1650%', left: '-930%' }, 1500);
+			}, $time);
+		}
+		
+        function revealLogo()
+		{
+			$("#magenta").animate({top: "265px", left: "402px"}, 700);
+			$("#cyan").animate({top: "376px", left: "466px"}, 700);
+			$("#yellow").animate({top: "446px", left: "285px"}, 700);
+			$("#green").animate({top: "166px", left: "284px"}, 700, function() {
+				$("#meesssenger").animate({top: "110px", left: "590px", opacity: 1}, 1200, function(){ enterWebPage(300); });
+			});
+		}
+		
+		revealLogo();
+    });
+</script>
+</head>
+
+<body style="border: 0px;">
+<div style="position: fixed; top: 0px; left: 0px; width: 1366px; height: 768px; overflow: hidden;">
+	<div id="main" style="position: absolute; top: 0px; left: 0px; width: 1366px; height: 768px;">
+    	<img id="bgr" src="BRG-top.png" width="1366" height="768" style="position: absolute; top: 0px; left: 0px; opacity: 1;" />
+        <h1 id="meesssenger" style="position: absolute; top: 110px; left: 490px; font-size: 110px; font-family: 'Segoe UI'; color: #fff; font-weight: 300; opacity: 0;">messenger</h1>
+    	<img id="magenta" src="magentaTR.png" width="216" height="152" style="position: absolute; top: -152px; left: 402px;" />
+        <img id="cyan" src="cyanTR.png" width="152" height="222" style="position: absolute; top: 376px; left: 1518px;" />
+        <img id="yellow" src="yellowTR.png" width="221" height="152" style="position: absolute; top: 990px; left: 285px;" />
+        <img id="green" src="greenTR.png" width="278" height="320" style="position: absolute; top: 166px; left: -278px;" />
+        <img id="bgr-transition" src="BGR-transition.png" width="100%" height="100%" style="position: absolute; top: 0px; left: 0px; display: none;" />
+    </div>
+</div>
+</body>
+</html>
