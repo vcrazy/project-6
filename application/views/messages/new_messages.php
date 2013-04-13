@@ -6,7 +6,10 @@
     <h3>Съобщение</h3>
   </div>
   <div class="modal-body">
-    <p>some content</p>
+    <p>От</p>
+    <input type="text" name="bookId" id="bookId" value=""/>
+    
+    <p>От</p>
     <input type="text" name="bookId" id="bookId" value=""/>
   </div>
 </div>
