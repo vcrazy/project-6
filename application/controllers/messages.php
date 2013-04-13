@@ -68,7 +68,7 @@ class Messages extends MY_Controller
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");
                     
-                    $data['date']=date("Y-M-D H:i:s");
+                    $data['date']=date("Y-m-d H:i:s");
                     
                     $data['person_from']=1;
                     $data['is_group']=0;
@@ -79,6 +79,26 @@ class Messages extends MY_Controller
                     
                     $data['person_to']=$_POST['inputPerson'];
                     $data['message']=$_POST['InputMessage'];
+
+					if(!empty($_FILES))
+					{
+						$this->load->helper('form');
+
+						$config['upload_path'] = APPPATH . '../uploads/';
+						$config['max_size']	= '2048';
+						$config['allowed_types'] = '*';
+						$config['encrypt_name'] = TRUE; // rename
+
+						$this->load->library('upload', $config);
+
+						$this->upload->do_upload();
+						$errors = $this->upload->display_errors();
+						if(empty($errors))
+						{
+							$file_data = $this->upload->data();
+							$data['file_path'] = 'uploads/' . $file_data['file_name'];
+						}
+					}
                     
                     $this->Model_messages->send($data);
 		}

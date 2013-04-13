@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 		<?php include_once APPPATH . 'views/templates/templates.html'; ?>
-		<input type="file" name="file" />
+		<input type="file" name="userfile" />
     </div>
   </div>
 </form>
