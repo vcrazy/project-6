@@ -11,9 +11,10 @@ class Model_facebook extends MY_Model
 
 		require_once APPPATH . 'libraries/facebook/facebook.php';
 
-		$config = array();
-		$config['appId'] = '114818515374177';
-		$config['secret'] = 'f656f521fbd2b9749b8ce368524e6b77';
+		$config = array(
+			'appId' => '114818515374177',
+			'secret' => 'f656f521fbd2b9749b8ce368524e6b77'
+		);
 
 		$this->fb = new Facebook($config);
 	}
