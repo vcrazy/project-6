@@ -11,6 +11,7 @@
                 <div class="white_back content_container">
                     <?php include($view . '.php'); ?>
                 </div>
+				<?php include(APPPATH . '/views/home_page/home_page_view.php'); ?>
             </div>
         </div>
     </div>

@@ -80,8 +80,8 @@ $(document).ready(function(){
 		}, 3700);
 	}
 
-	if(typeof $.cookie('logo_shown6') == 'undefined'){
-		$.cookie('logo_shown6', 1);
+	if(typeof $.cookie('logo_shownaa6') == 'undefined'){
+		$.cookie('logo_shownaa6', 1);
 		revealLogo();
 	}
 });

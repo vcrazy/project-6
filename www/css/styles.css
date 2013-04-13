@@ -96,11 +96,11 @@ body {
 }
 
 .heading-messages {
-	background: url('/img/heading-messages.png') no-repeat !important;
+	background: url('/img/heading-messages.png') no-repeat center center !important;
 }
 
 .heading-groups {
-	background: url('/img/heading-groups.png') no-repeat !important;
+	background: url('/img/heading-groups.png') no-repeat center center !important;
 }
 
 .control-group input[type="text"], .control-group textarea {
@@ -124,6 +124,7 @@ body {
 
 #header_links {
 	padding: 5px 15px;
+	margin-right: 120px;
 }
 
 #header_links a, #header_links a:visited {
