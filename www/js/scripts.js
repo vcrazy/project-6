@@ -14,7 +14,6 @@ $(document).ready(function(){
 		console.log('message received');
 	}
 
-
 	socket.on('message', function(data){
 		console.log(data);
 	});

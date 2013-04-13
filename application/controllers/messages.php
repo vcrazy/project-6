@@ -72,7 +72,7 @@ class Messages extends MY_Controller
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");
                     $data=array();
-                    $data['date']=date("Y-M-D H:i:s");
+                    $data['date']=date("Y-m-d H:i:s");
                     $data['person_from']=$session['student_id'];
                     $data['person_to']=$_POST['send_to_id'];
                     $data['message']=$_POST['InputMessage'];
@@ -111,7 +111,7 @@ class Messages extends MY_Controller
 					if($result)
 					{
 						$this->data['sent_message'] = $this->Model_messages->send($data);
-						$this->data['sent_to_user_id'] = $_POST['inputPerson'];
+						$this->data['sent_to_user_id'] = $data['person_to'];
 						$this->data['sent_message_text'] = $_POST['InputMessage'];
 						$user = $this->session->userdata('user');
 						$this->data['sent_from_names'] = $user['student_names'];
