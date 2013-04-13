@@ -9,13 +9,16 @@ class Messages extends MY_Controller
             $this->data['view'] = 'home_page/home_page_view';
         }
         
-	public function send()
-	{
+        public function sent() {
+            $this->load->model('Model_groups');
+            $my_groups=$this->Model_groups->get_my_all();
+        }
+        
+	public function send() {
             $my_groups=array();
             $this->load->model('Model_groups');
             $my_groups=$this->Model_groups->get_my_all();
             $json=array();
-//            var_dump($my_groups);
             $groups_ids=array();
             $specialties_ids=array();
             
@@ -60,30 +63,34 @@ class Messages extends MY_Controller
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('inputPerson', 'To', 'required');
 		$this->form_validation->set_rules('InputMessage', 'Message', 'required');
+                $this->form_validation->set_rules('send_to_id', 'Message', 'required');
 
-		if ($this->form_validation->run() == FALSE){
+		if ($this->form_validation->run() == FALSE) {
                     
 		}
 		else {
+                    $session=$this->session->userdata('user');
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");
                     
+                    $data=array();
                     $data['date']=date("Y-M-D H:i:s");
-                    
-                    $data['person_from']=1;
-                    $data['is_group']=0;
-                            
-                    if ( !($this->Model_validate->validate_student($_POST['inputPerson'])) ) {
-                        $data['person_to']=$_POST['inputPerson'];
-                    }
-                    
-                    $data['person_to']=$_POST['inputPerson'];
+                    $data['person_from']=$session['student_id'];
+                    $data['person_to']=$_POST['send_to_id'];
                     $data['message']=$_POST['InputMessage'];
+                    
+                    $data['is_group']=0;
+                    if ( isset($_POST['is_it_group']) ) {
+                        $data['is_group']=$_POST['is_it_group'];
+                    }
+                            
+                    if ( !($this->Model_validate->validate_student($_POST['send_to_id'])) ) {
+                        $data['person_to']=$_POST['send_to_id'];
+                    }
                     
                     $this->Model_messages->send($data);
 		}
-            }
-                
+            } 
             $this->load_view();
 	}
 }
