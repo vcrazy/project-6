@@ -38,7 +38,7 @@
   </div>
   <div class="control-group">
     <div class="controls">
-		<button type="submit" class="btn">Изпрати</button>
+		<button id="send_message_button" type="submit" class="btn btn-primary" data-loading-text="Изпращане...">Изпрати</button>
 		<div class="btn-group">
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				Използвай темплейт
@@ -64,5 +64,6 @@
             $('#send_to_id').val(asoc_arr[field_value][0]);
             $('#is_it_group').val(asoc_arr[field_value][1]);
         }
+        return true;
     });
 </script>

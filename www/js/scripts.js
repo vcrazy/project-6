@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	$('#test').dataTable();
+        
+        $('#sent_messages_table').dataTable();
 
 	$('ul.get_template li a').click(function(){
 		$('#InputMessage').html($('#tpl_' + $(this).attr('data-tpl')).tmpl({name: $('#inputPerson').val()}));
@@ -9,4 +11,12 @@ $(document).ready(function(){
 
 		return false;
 	});
+        
+       $('#send_message_button').click(function () {
+        var btn = $(this);
+        btn.button('loading');
+        setTimeout(function () { 
+            btn.button('reset');
+        }, 3000);
+       });
 });

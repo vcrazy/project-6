@@ -31,7 +31,7 @@ class Model_messages extends MY_Model
             $user=$session['student_id'];
             $this->db->select('*');
             $this->db->from('messages');
-            $this->db->where('student_id', $user);
+            $this->db->where('message_from', $user);
             $query = $this->db->get();
 
             return $this->results($query);

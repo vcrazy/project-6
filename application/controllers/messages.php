@@ -10,7 +10,11 @@ class Messages extends MY_Controller
         }
         
         public function sent() {
-//            $this->load->model('Model_messages');
+            $this->data['menu'] = "menu/menu";
+            $this->data['view'] = 'messages/sent_messages';
+            $this->load->model('Model_messages');
+            $this->data['all_sent_messages']=$this->Model_messages->get_sent_messages();
+            $this->load_view();
         }
         
 	public function send() {
@@ -72,7 +76,7 @@ class Messages extends MY_Controller
                     $this->load->model("Model_validate");
                     $this->load->model("Model_messages");
                     $data=array();
-                    $data['date']=date("Y-M-D H:i:s");
+                    $data['date']=date("Y-m-d H:i:s");
                     $data['person_from']=$session['student_id'];
                     $data['person_to']=$_POST['send_to_id'];
                     $data['message']=$_POST['InputMessage'];
@@ -107,7 +111,7 @@ class Messages extends MY_Controller
                     }
                     $this->Model_messages->send($data);
 		}
-            } 
+            }
             $this->load_view();
 	}
 }
