@@ -1,5 +1,4 @@
 /nbproject/
 /application/cache/
 /application/config/database.php
-/ioserver/node_modules/.bin/
-/ioserver/node_modules/socket.io/node_modules/socket.io-client/node_modules/.bin/
+/ioserver/node_modules/
