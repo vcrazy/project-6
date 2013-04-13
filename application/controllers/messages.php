@@ -11,15 +11,16 @@ class Messages extends MY_Controller
         
 	public function send()
 	{
-            $this->load->model('model_groups');
+            $my_groups=array();
+            $this->load->model('Model_groups');
             $my_groups=$this->Model_groups->get_my_all();
             $this->load->model('Model_user');
             $groups_people=$this->Model_user->load_users();
             $json=array();
             foreach ($groups_people as $group_person) {
                 $json_=array();
-                $json_['label']=$group_person->student_names;
-                $json_['value']=$group_person->student_id;
+                $json_['label']=$group_person['student_names'];
+                $json_['value']=$group_person['student_id'];
                 $json[]=$json_;
             }
             $this->data['users_to_send']=json_encode($json);

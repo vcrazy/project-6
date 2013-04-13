@@ -47,7 +47,7 @@ class Model_groups extends MY_Model
 		$this->db->limit(1);
 		$query = $this->db->get();
 
-		$student_specialty_id = $this->single($query, 'student_specialy_id');
+		$student_specialty_id = $this->single($query, 'student_specialty_id');
 
 		$this->db->select('*');
 		$this->db->from('specialties');
