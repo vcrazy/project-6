@@ -4,12 +4,20 @@
     <label class="control-label" for="inputPerson">To</label>
     <div class="controls">
       <?php if(isset($users_to_send)): ?>
-       <select name="inputPerson">
-        <option value=""></option>
-        <?php foreach($users_to_send as $row): ?>
-        <option value="<?php echo $row->student_id; ?>"><?php echo $row->student_names; ?></option>
-        <?php endforeach; ?>
-        </select>
+        <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4"/>
+        <script type="text/javascript">
+            var jsonString = '<?php echo $users_to_send?>';
+            var jsonObj = $.parseJSON(jsonString);
+            var sourceArr = [];
+
+            for (var i = 0; i < jsonObj.length; i++) {
+                sourceArr.push(jsonObj[i].label);
+            }
+
+            $("#inputPerson").typeahead({
+                source: sourceArr
+            });
+        </script>
       <?php endif; ?>
     </div>
   </div>
@@ -21,7 +29,7 @@
   </div>
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Sign in</button>
+      <button type="submit" class="btn">Изпрати</button>
     </div>
   </div>
 </form>
