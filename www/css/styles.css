@@ -1,7 +1,11 @@
+body {
+	background: url('/img/bg.gif') repeat-y center center;
+}
+
 .our_header {
     /*background: #000;*/
     color: #FFF;
-    background: url('/img/header-6messenger.png') no-repeat center  center; !important;
+    background: url('/img/header-6messenger.png') no-repeat center center !important;
     height: 80px !important;
     /*no-repeat right -150px  center;*/
 }
