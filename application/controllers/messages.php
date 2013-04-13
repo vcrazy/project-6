@@ -14,9 +14,36 @@ class Messages extends MY_Controller
             $my_groups=array();
             $this->load->model('Model_groups');
             $my_groups=$this->Model_groups->get_my_all();
-            $this->load->model('Model_user');
-            $groups_people=$this->Model_user->load_users();
             $json=array();
+//            var_dump($my_groups);
+            $groups_ids=array();
+            $specialties_ids=array();
+            
+            foreach ($my_groups as $group) {
+                if ( isset($group['group_id']) ) {
+                    $groups_ids[]=$group['group_id'];
+                    $json_['label']='@'.$group['group_subject'];
+                    $json_['value']=$group['group_id'];
+                    $json[]=$json_;
+                }
+                else if (isset($group['specialty_id'])){
+                    $specialties_ids[]=$group['specialty_id'];
+                    $json_['label']='@'.$group['specialty_name'];
+                    $json_['value']=$group['specialty_id'];
+                    $json[]=$json_;
+                }
+            }
+
+            $this->load->model('Model_user');
+            $groups_people=$this->Model_user->load_users($groups_ids,$specialties_ids);
+            if (!empty ($groups_people)){
+                $groups_people = array_map("json_encode" ,$groups_people);
+                $groups_people = array_unique($groups_people);
+                $groups_people = array_map(function($e){
+                    return json_decode($e, TRUE);
+                }, $groups_people);
+            }
+            
             foreach ($groups_people as $group_person) {
                 $json_=array();
                 $json_['label']=$group_person['student_names'];

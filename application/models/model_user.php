@@ -46,15 +46,36 @@ class Model_user extends MY_Model
 		$this->session->sess_destroy();
 	}
         
-        public function load_users()
+        public function load_users($groups_ids,$specialties_ids)
 	{
             $session=$this->session->userdata('user');
             $user=$session['student_id'];
-            
             $return_students=array();
-            $this->db->select('student_id,student_names');
-            $this->db->where('student_id !=', $user);
-            $query = $this->db->get('students');
-            return $this->results($query);
+            $users=array();
+            if (!empty($groups_ids)) {
+                $this->db->select('students.student_id,students.student_names');
+                $this->db->from('group_students');
+                $this->db->join('students', 'group_students.student_id = students.student_id', 'left');
+                $this->db->where('group_students.student_id !=', $user);
+                $this->db->where_in('group_students.group_id', $groups_ids);
+                $query = $this->db->get();
+                $return_students=$this->results($query);
+            }
+            
+            if (!empty($specialties_ids)) {
+                $this->db->select('student_id,student_names');
+                $this->db->from('students');
+                $this->db->where('student_id !=', $user);
+                $this->db->where_in('student_specialty_id', $specialties_ids);
+                $query = $this->db->get();
+                $specialty_array=$this->results($query);
+                if ( !empty($specialty_array) ) {
+                    if (!empty($return_students)) {
+                        $return_students=array_merge($return_students,$specialty_array);
+                    }
+                }
+            }
+            
+            return $return_students;
         }
 }
