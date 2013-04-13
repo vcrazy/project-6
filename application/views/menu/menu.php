@@ -2,12 +2,12 @@
   <div class="accordion-group remove_border">
     <div class="accordion-heading menu_bottom_border">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Съобщения
+        <img src="/img/messages.png" alt="Съобщения" />
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse <?php if($active['controller'] != 'groups' && $active['controller'] != 'specialties') echo 'in'; ?>">
-      <div class="accordion-inner remove_border">
-        <ul class="nav nav-list">
+      <div class="accordion-inner">
+        <ul class="nav nav-list messages">
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'send') echo 'class="active"'; ?>><a href="/messages/send">Изпрати</a></li>
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'inbox') echo 'class="active"'; ?>><a href="/messages/inbox">Непрочетени</a></li>
             <li <?php if($active['controller'] == 'messages' && $active['method'] == 'read') echo 'class="active"'; ?>><a href="/messages/read">Прочетени</a></li>
@@ -19,12 +19,12 @@
   <div class="accordion-group remove_border">
     <div class="accordion-heading menu_bottom_border">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Групи
+        <img src="/img/groups.png" alt="Групи" />
       </a>
     </div>
     <div id="collapseTwo" class="accordion-body collapse <?php if($active['controller'] == 'groups' || $active['controller'] == 'specialties') echo 'in'; ?>">
-      <div class="accordion-inner remove_border">
-       <ul class="nav nav-list">
+      <div class="accordion-inner">
+       <ul class="nav nav-list groups">
 			<?php foreach($all_my_groups as $my_group): ?>
 				<?php if(isset($my_group['group_id'])): ?>
 					<li <?php if($active['controller'] == 'groups' && $active['param'] == $my_group['group_id']) echo 'class="active"'; ?>>
