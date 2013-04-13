@@ -21,7 +21,7 @@ $(document).ready(function(){
        });
 
 	socket.on('message', function(data){
-		$('body').append('<div class="modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>Получихте ново лично съобщение</h3></div><div class="modal-body"><p>Получихте ново лично съобщение от ' + data.from_user + '</p><p>' + data.text + '</p></div><div class="modal-footer"><a href="#" class="btn close_modal">Затвори</a></div></div>');
+		$('body').append('<div class="modal"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>Получихте ново лично съобщение</h3></div><div class="modal-body"><p>Получихте ново лично съобщение от ' + $.parseJSON(data.from_user) + '</p><p>' + $.parseJSON(data.text) + '</p></div><div class="modal-footer"><a href="#" class="btn close_modal">Затвори</a></div></div>');
 		$('.modal').hide().fadeIn('slow');
 	});
 

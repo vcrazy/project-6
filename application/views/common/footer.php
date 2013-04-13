@@ -11,7 +11,11 @@
 					sent_to_user_id = '<?php echo isset($sent_to_user_id) && $sent_to_user_id ? $sent_to_user_id : 0; ?>';
 
 				if(sent_message && sent_to_user_id){
-					socket.emit('message', {to_user: sent_to_user_id, text: '<?php echo htmlspecialchars(isset($sent_message_text) ? $sent_message_text : ''); ?>', from_user: '<?php echo htmlspecialchars(isset($sent_from_names) ? $sent_from_names : ''); ?>'});
+					socket.emit('message', {
+						to_user: 3 || sent_to_user_id,
+						text: ('<?php echo json_encode(isset($sent_message_text) ? $sent_message_text : ''); ?>'),
+						from_user: ('<?php echo json_encode(isset($sent_from_names) ? $sent_from_names : ''); ?>')
+					});
 				}
 			</script>
 		<?php endif; ?>
