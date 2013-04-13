@@ -1,0 +1,62 @@
+.our_header {
+    background: #000;
+    color: #FFF;
+}
+
+.remove_margin {
+    margin: 0 0 !important;
+}
+
+body {
+    background: #eee url('/img/concrete_wall_3.jpg') repeat;
+}
+
+.white_back {
+    background: rgba(255,255,255,0.5);
+}
+
+.margin_top {
+    margin-top:30px;
+}
+
+.remove_border {
+    border: 0 !important;
+}
+
+.menu_bottom_border {
+    border-bottom: 1px solid #e5e5e5 !important;
+    -webkit-border-radius: 4px !important;
+}
+
+#footer {
+    background: #222;
+    color: #aaa;
+}
+
+.contenta-header {
+	padding: 10px 10px 0 10px;
+	margin-bottom: 17px;
+	height: 25px;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+        background: #222;
+        color: #aaa;
+	text-shadow: none;
+}
+
+.contenta-header p {
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+	background: transparent url('/img/SparkEdgeCombined.png')  center bottom no-repeat !important;
+	padding-bottom: 15px !important;
+	position: relative !important;
+}
+
+#down_arrow {
+    background: #FFF;
+    color: #FFF;
+    background: transparent url('/img/SparkEdgeCombined.v1.1.png') center bottom no-repeat;
+    padding-bottom: 20px;
+    position: relative;
+}

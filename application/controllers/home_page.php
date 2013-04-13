@@ -13,6 +13,7 @@ class Home_page extends MY_Controller
 	
 	public function index()
 	{
+                $this->data['menu'] = "menu/menu";
 		$this->data['view'] = 'home_page/home_page_view';
 		
 		$this->load_view();
