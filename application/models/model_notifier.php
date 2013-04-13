@@ -3,7 +3,7 @@
 class Model_notifier extends MY_Model
 {
 	public function notify($user_id, $messages = array())
-	{
+	{return;
 		$this->db->select('student_send_email, student_send_sms, student_email, student_phone');
 		$this->db->from('students');
 		$this->db->where('student_id', $user_id);
