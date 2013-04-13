@@ -24,12 +24,26 @@
   <div class="control-group">
     <label class="control-label" for="InputMessage">Message</label>
     <div class="controls">
-        <textarea id="InputMessage" name="InputMessage" placeholder="Message" rows="3"></textarea>
+        <textarea id="InputMessage" name="InputMessage" placeholder="Message" rows="3" style="width: 400px;"></textarea>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Изпрати</button>
+		<button type="submit" class="btn">Изпрати</button>
+		<div class="btn-group">
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+				Използвай темплейт
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu get_template">
+				<li><a href="#" data-tpl="gotoroom221">Явете се в стая 221</a></li>
+				<li><a href="#" data-tpl="callroom221">Обадете се на отдел "Студенти"</a></li>
+				<li><a href="#" data-tpl="unpaidtermtax">Неплатена семестриална такса</a></li>
+				<li><a href="#" data-tpl="nextexam">Следващо контролно</a></li>
+				<li><a href="#" data-tpl="nextlecture">Ще има ли лекция</a></li>
+			</ul>
+		</div>
+		<?php include_once APPPATH . 'views/templates/templates.html'; ?>
     </div>
   </div>
 </form>
