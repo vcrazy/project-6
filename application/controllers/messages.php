@@ -13,7 +13,6 @@ class Messages extends MY_Controller
         
         public function index() {
 			$this->data['content_title'] = 'Последни съобщения';
-            $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/last_messages';
 
 			$this->data['last_messages'] = $this->Model_messages->get_last_messages();

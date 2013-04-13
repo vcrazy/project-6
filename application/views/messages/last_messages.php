@@ -56,8 +56,12 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php elseif(!$this->session->userdata('is_logged')): ?>
+<div class="alert alert-info" style="margin-bottom: 0px;">
+    Моля, влезте в профила си, за да видите Вашите съобщения.
+</div>
 <?php else: ?>
-<div class="alert alert-info">
+<div class="alert alert-info" style="margin-bottom: 0px;">
     Вие нямате нови съобщения !
 </div>
 <?php endif; ?>
