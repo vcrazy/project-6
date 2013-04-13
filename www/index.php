@@ -1,7 +1,7 @@
 <?php
 
 // Decide whether we are on development or in production
-define('PRODUCTION', $_SERVER['HTTP_HOST'] === 'mg-security.com');
+define('PRODUCTION', $_SERVER['HTTP_HOST'] !== 'project-6.loc');
 // Then use with if(PRODUCTION) ... or something like that
 
 /*
@@ -37,7 +37,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
-			error_reporting(E_ALL);
+			error_reporting(0);
 		break;
 	
 		case 'testing':

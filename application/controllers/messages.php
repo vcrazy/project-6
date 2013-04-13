@@ -173,6 +173,13 @@ class Messages extends MY_Controller
                     }
 		}
             }
+
+			// if we have m_sender_name
+			elseif(isset($_GET['m_sender_name']))
+			{
+				$this->data['preselect_user_names'] = $_GET['m_sender_name'];
+			}
+
             $this->load_view();
 	}
 }

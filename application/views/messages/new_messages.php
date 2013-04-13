@@ -11,6 +11,7 @@
     <p>Съобщение:<br/> <span style="font-size:20px;" id="m_message"></span></p>
     <form action="/messages/send" method="GET">
         <input type="hidden" id="m_sender_name" name="m_sender_name" value=""/>
+        <button id="send_message_button" type="submit" class="btn btn-primary">Изпрати съобщение</button>
         <button type="button" data-dismiss="modal">Close</button>
     </form>
     
@@ -34,14 +35,14 @@
             <?php if ( isset($message['student_names']) ): ?>
 
             <td><?php echo $message['student_names'];?></td>
-            <td>Теб</td>
+            <td>Вас</td>
             <td>
               <?php 
                 $short_mess=mb_substr($message['message_text'], 0,40);
                 if ( strlen($message['message_text'])>40 ) {
                     $short_mess.='...';
                 }
-                echo '<a data-message="'.$message['message_text'].'" data-receiver="Теб" data-sender="'.$message['student_names'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                echo '<a data-message="'.$message['message_text'].'" data-receiver="Вас" data-sender="'.$message['student_names'].'"z title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
               ?>
             </td>
             <td><?php echo $message['message_date'];?></td>
@@ -49,14 +50,14 @@
             <?php elseif ( isset($message['specialty_name']) ): ?>
 
             <td><?php echo $message['specialty_name'];?></td>
-            <td>Теб</td>
+            <td>Вас</td>
             <td>
                 <?php
                     $short_mess=mb_substr($message['message_text'], 0,40);
                     if ( strlen($message['message_text'])>40 ) {
                         $short_mess.='...';
                     }
-                    echo '<a data-message="'.$message['message_text'].'" data-receiver="Теб" data-sender="'.$message['specialty_name'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                    echo '<a data-message="'.$message['message_text'].'" data-receiver="Вас" data-sender="'.$message['specialty_name'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
                 ?>
             </td>
             <td><?php echo $message['message_date'];?></td>
@@ -64,14 +65,14 @@
             <?php else: ?>
 
             <td><?php echo $message['group_subject'];?></td>
-            <td>Теб</td>
+            <td>Вас</td>
             <td>
                 <?php
                     $short_mess=mb_substr($message['message_text'], 0,40);
                     if ( strlen($message['message_text'])>40 ) {
                         $short_mess.='...';
                     }
-                    echo '<a data-message_id="'.$message['message_id'].'" data-message="'.$message['message_text'].'" data-receiver="Теб" data-sender="'.$message['group_subject'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                    echo '<a data-message_id="'.$message['message_id'].'" data-message="'.$message['message_text'].'" data-receiver="Вас" data-sender="'.$message['group_subject'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
                 ?>
             </td>
             <td><?php echo $message['message_date'];?></td>
