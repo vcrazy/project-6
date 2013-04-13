@@ -15,7 +15,6 @@ class Register extends MY_Controller
 		}
 
 		$this->load->model('Model_facebook');
-		$this->load->model('Model_user');
 	}
 
 	public function index()
@@ -32,12 +31,13 @@ class Register extends MY_Controller
 			);
 			exit;
 		}
+		elseif(!$this->Model_user->user_exists($this->Model_facebook->get_user_id()))
+		{
+			$this->Model_user->register($this->Model_facebook->api('/me'));
+		}
 
-		// get my info
-		$this->data['me'] = $this->Model_facebook->api('/me');
-
-		// load the registration view
-		$this->data['view'] = 'user/register_view';
-		$this->load_view();
+		$this->Model_user->login($this->Model_facebook->get_user_id());
+		header("Location: /");
+		exit;
 	}
 }

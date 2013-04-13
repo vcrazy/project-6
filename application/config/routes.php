@@ -41,5 +41,7 @@
 $route['default_controller'] = "home_page";
 $route['404_override'] = '';
 
+$route['groups/:num'] = 'groups/group/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
