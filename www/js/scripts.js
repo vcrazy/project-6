@@ -15,7 +15,6 @@ $(document).ready(function(){
 	$('ul.get_template li a').click(function(){
 		$('#InputMessage').html($('#tpl_' + $(this).attr('data-tpl')).tmpl({name: $('#inputPerson').val()}));
 		$('#InputMessage').html($('#InputMessage').html().replace(/<br\s*[\/]?>/gi, "\n"));
-
 		$(this).closest('div').find('button').click().blur();
 
 		return false;
@@ -46,7 +45,7 @@ $(document).ready(function(){
 //            $('#addBookDialog').modal('show');
 //       });
 
-        $('.button_msg').click( function () {
+        $('body').on('click', '.button_msg', function () {
                     var myperson = $(this).data('sender');
                     var mymess = $(this).data('message');
                     alert(myperson);
