@@ -11,7 +11,6 @@
     <p>Съобщение:<br/> <span style="font-size:20px;" id="m_message"></span></p>
     <form action="/messages/send" method="GET">
         <input type="hidden" id="m_sender_name" name="m_sender_name" value=""/>
-        <button id="send_message_button" type="submit" class="btn btn-primary">Изпрати отговор</button>
         <button type="button" data-dismiss="modal">Close</button>
     </form>
     

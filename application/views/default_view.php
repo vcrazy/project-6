@@ -4,7 +4,7 @@
         <div class="row-fluid">
             <div class="span3 span-fixed-sidebar white_back"><?php include($menu. '.php'); ?></div>
             <div class="span9">
-                <div class="contenta-header">
+                <div class="contenta-header <?php if($active['controller'] != 'groups' && $active['controller'] != 'specialties') echo 'heading-messages'; else echo 'heading-groups'; ?>">
                     <p><?php echo $content_title; ?></p>
                 </div>
                 

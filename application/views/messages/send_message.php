@@ -1,7 +1,7 @@
 <?php// echo validation_errors(); ?>
 <form id="send_user" name="send_user" action="/messages/send" method="POST" class="form-horizontal" enctype="multipart/form-data">
   <div class="control-group">
-    <label class="control-label" for="inputPerson">To</label>
+    <label class="control-label" for="inputPerson">До</label>
     <div class="controls">
       <?php if(isset($users_to_send)): ?>
         <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4"/>
@@ -31,14 +31,14 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="InputMessage">Message</label>
+    <label class="control-label" for="InputMessage">Съобщение</label>
     <div class="controls">
-        <textarea id="InputMessage" name="InputMessage" placeholder="Message" rows="3" style="width: 400px;"></textarea>
+        <textarea id="InputMessage" name="InputMessage" placeholder="Съобщение" rows="3" style="width: 400px;"></textarea>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-		<button id="send_message_button" type="submit" class="btn btn-primary" data-loading-text="Изпращане...">Изпрати</button>
+		<button id="send_message_button" type="submit" class="btn btn-success" data-loading-text="Изпращане...">Изпрати</button>
 		<div class="btn-group">
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				Използвай темплейт
