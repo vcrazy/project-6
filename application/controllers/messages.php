@@ -99,7 +99,7 @@ class Messages extends MY_Controller
                             $data['is_speciality']=$_POST['send_to_id'];
                         }
                     } else {
-                        if ( !($this->Model_validate->validate_student($_POST['send_to_id'])) ) {
+                        if ( $this->Model_validate->validate_student($_POST['send_to_id']) ) {
                             $data['person_to']=$_POST['send_to_id'];
                         }
                     }

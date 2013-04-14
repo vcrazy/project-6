@@ -16,6 +16,10 @@
             <td><?php echo $message['student_names'];?></td>
             <td><?php echo $message['message_text'];?></td>
             <td><?php echo $message['message_date'];?></td>
+            <?php elseif ( isset($message['specialty_name']) ): ?>
+            <td><?php echo $message['specialty_name'];?></td>
+            <td><?php echo $message['message_text'];?></td>
+            <td><?php echo $message['message_date'];?></td>
             <?php else: ?>
             <td><?php echo $message['group_subject'];?></td>
             <td><?php echo $message['message_text'];?></td>
