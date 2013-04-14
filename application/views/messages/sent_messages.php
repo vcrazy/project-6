@@ -69,7 +69,13 @@
             </td>
             <td><?php echo $message['message_date'];?></td>
             <?php endif; ?>
-            <td><?php if (!empty($message['file_path'])) {echo '<a href="#"><img src="/img/appbar.disk.download.png" alt="Има прикачен файл"/></a>';}?></td>
+            <td>
+				<?php if(!empty($message['file_path'])): ?>
+					<a href="/file_download?file=<?php echo urlencode($message['file_path']); ?>">
+						<img src="/img/appbar.disk.download.png" alt="Има прикачен файл" title="Има прикачен файл" />
+					</a>
+				<?php endif; ?>
+			</td>
         </tr>
         <?php endforeach; ?>
     </tbody>

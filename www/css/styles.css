@@ -1,17 +1,18 @@
+body {
+	background: url('/img/bg.gif') repeat-y center center;
+	font-family: "Segoe UI", "Times New Roman", Verdana !important;
+}
+
 .our_header {
     /*background: #000;*/
     color: #FFF;
-    background: url('/img/header-6messenger.png') no-repeat center  center; !important;
+    background: url('/img/header-6messenger.png') no-repeat center center !important;
     height: 80px !important;
     /*no-repeat right -150px  center;*/
 }
 
 .remove_margin {
     margin: 0 0 !important;
-}
-
-body {
-    background: #eee url('/img/concrete_wall_3.jpg') repeat;
 }
 
 .white_back {
@@ -32,8 +33,12 @@ body {
 }
 
 #footer {
+/*	margin-top: 20px;*/
+/*	position: relative;*/
     background: #222;
     color: #aaa;
+	background: url('/img/footer.png') no-repeat center center !important;
+	height: 40px;
 }
 
 .contenta-header {
