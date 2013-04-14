@@ -46,6 +46,22 @@ $(document).ready(function(){
             var mymess = $(this).data('message');
             var mymessid = $(this).data('message_id');
             
+            if ( mymessid ) {
+                $.ajax({
+                    url: "/messages/make_read",
+                    type: "post",
+                    data: {"message_id": mymessid},
+//                    success: function(){
+//                        alert("success");
+//                         $("#result").html('submitted successfully');
+//                    },
+//                    error:function(){
+//                        alert("failure");
+//                        $("#result").html('there is error while submit');
+//                    }   
+                  }); 
+            }
+            
             $('#m_sender').html(fromperson);
             $('#m_receiver').html(tocperson);
             $('#m_message').html(mymess);

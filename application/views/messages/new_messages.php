@@ -42,7 +42,7 @@
                 if ( strlen($message['message_text'])>40 ) {
                     $short_mess.='...';
                 }
-                echo '<a data-message="'.$message['message_text'].'" data-receiver="Вас" data-sender="'.$message['student_names'].'"z title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                echo '<a data-message="'.$message['message_text'].'" data-message_id="'.$message['message_id'].'" data-receiver="Вас" data-sender="'.$message['student_names'].'"z title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
               ?>
             </td>
             <td><?php echo $message['message_date'];?></td>
@@ -57,7 +57,7 @@
                     if ( strlen($message['message_text'])>40 ) {
                         $short_mess.='...';
                     }
-                    echo '<a data-message="'.$message['message_text'].'" data-receiver="Вас" data-sender="'.$message['specialty_name'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                    echo '<a data-message="'.$message['message_text'].'" data-message_id="'.$message['message_id'].'" data-receiver="Вас" data-sender="'.$message['specialty_name'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
                 ?>
             </td>
             <td><?php echo $message['message_date'];?></td>
