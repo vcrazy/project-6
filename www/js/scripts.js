@@ -1,7 +1,15 @@
 $(document).ready(function(){
 	$('#test').dataTable();
         
-        $('#sent_messages_table').dataTable();
+        $('#sent_messages_table').dataTable(
+            {"bAutoWidth": false,
+            "aoColumns": [
+                           { "sWidth": "20%" },
+                           { "sWidth": "20%" },
+                           { "sWidth": "40%" },
+                           { "sWidth": "20%" }
+                       ]
+        });
 
 	$('ul.get_template li a').click(function(){
 		$('#InputMessage').html($('#tpl_' + $(this).attr('data-tpl')).tmpl({name: $('#inputPerson').val()}));

@@ -17,6 +17,22 @@ class Messages extends MY_Controller
             $this->load_view();
         }
         
+        public function unread() {
+            $this->data['menu'] = "menu/menu";
+            $this->data['view'] = 'messages/unread_messages';
+            $this->load->model('Model_messages');
+            $this->data['all_unread_messages']=$this->Model_messages->get_unread_messages();
+            $this->load_view();
+        }
+        
+        public function inbox() {
+            $this->data['menu'] = "menu/menu";
+            $this->data['view'] = 'messages/new_messages';
+            $this->load->model('Model_messages');
+            $this->data['all_new_messages']=$this->Model_messages->get_new_messages();
+            $this->load_view();
+        }
+        
 	public function send() {
             $my_groups=array();
             $this->load->model('Model_groups');

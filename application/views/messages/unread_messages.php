@@ -1,4 +1,4 @@
-<?php if(isset($all_sent_messages) && !empty($all_sent_messages)): ?>
+<?php if(isset($all_unread_messages) && !empty($all_unread_messages)): ?>
 <table id="sent_messages_table">
     <thead>
         <tr>
@@ -9,20 +9,22 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($all_sent_messages as $message): ?>
+        <?php foreach($all_unread_messages as $message): ?>
         <tr>
-            <td>Теб</td>
             <?php if ( isset($message['student_names']) ): ?>
             <td><?php echo $message['student_names'];?></td>
+            <td>Теб</td>
             <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...';?></td>
             <td><?php echo $message['message_date'];?></td>
             <?php elseif ( isset($message['specialty_name']) ): ?>
             <td><?php echo $message['specialty_name'];?></td>
-            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...'?></td>
+            <td>Теб</td>
+            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...';?></td>
             <td><?php echo $message['message_date'];?></td>
             <?php else: ?>
             <td><?php echo $message['group_subject'];?></td>
-            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...'?></td>
+            <td>Теб</td>
+            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...';?></td>
             <td><?php echo $message['message_date'];?></td>
             <?php endif; ?>
         </tr>
@@ -31,6 +33,6 @@
 </table>
 <?php else: ?>
 <div class="alert alert-info">
-    Вие нямате изпратени съобщения !
+    Вие нямате непрочетени съобщения !
 </div>
 <?php endif; ?>

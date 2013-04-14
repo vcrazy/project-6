@@ -1,4 +1,4 @@
-<?php if(isset($all_sent_messages) && !empty($all_sent_messages)): ?>
+<?php if(isset($all_new_messages) && !empty($all_new_messages)): ?>
 <table id="sent_messages_table">
     <thead>
         <tr>
@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($all_sent_messages as $message): ?>
+        <?php foreach($all_new_messages as $message): ?>
         <tr>
             <td>Теб</td>
             <?php if ( isset($message['student_names']) ): ?>
@@ -31,6 +31,6 @@
 </table>
 <?php else: ?>
 <div class="alert alert-info">
-    Вие нямате изпратени съобщения !
+    Вие нямате нови съобщения !
 </div>
 <?php endif; ?>
