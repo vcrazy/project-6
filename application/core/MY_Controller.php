@@ -13,6 +13,7 @@ class MY_Controller extends CI_Controller
 	{
 		$this->data['no_cache'] = microtime(TRUE);
 		$this->data['menu'] = "menu/menu";
+		$this->data['content_title'] = '6 Messenger';
 
 		if($this->session->userdata('is_logged'))
 		{

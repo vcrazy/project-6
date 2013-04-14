@@ -12,6 +12,8 @@ class Groups extends MY_Controller
 
 	public function group($group_id)
 	{
+		$this->data['content_title'] = 'Групи';
+
 		$group = $this->Model_groups->get($group_id);
 		$messages = $this->Model_messages->get_group_messages($group_id);
 
