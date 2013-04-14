@@ -10,7 +10,7 @@ class Messages extends MY_Controller
         }
         
         public function sent() {
-			$this->data['content_title'] = 'Съобщения';
+            $this->data['content_title'] = 'Съобщения';
 
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/sent_messages';

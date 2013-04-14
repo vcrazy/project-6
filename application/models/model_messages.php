@@ -52,7 +52,7 @@ class Model_messages extends MY_Model
             
             $result_array=array();
             
-            $this->db->select('students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('students', 'messages.message_to=students.student_id');
             $this->db->where('messages.message_from', $user);
@@ -61,7 +61,7 @@ class Model_messages extends MY_Model
 
             $result_array=$this->results($query);
             
-            $this->db->select('groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('groups', 'messages.group_id = groups.group_id');
             $this->db->where('messages.message_from', $user);
@@ -76,7 +76,7 @@ class Model_messages extends MY_Model
                     $result_array=$specialty_array;
                 }
             }
-            $this->db->select('specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('specialties', 'messages.speciality_id = specialties.specialty_id');
             $this->db->where('messages.message_from', $user);
@@ -103,7 +103,7 @@ class Model_messages extends MY_Model
             
             $result_array=array();
             
-            $this->db->select('students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('students', 'messages.message_from=students.student_id');
             $this->db->where('messages.message_from !=', $user);
@@ -113,7 +113,7 @@ class Model_messages extends MY_Model
 
             $result_array=$this->results($query);
             
-            $this->db->select('groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('groups', 'messages.group_id = groups.group_id');
             $this->db->where('messages.message_from !=', $user);
@@ -129,7 +129,7 @@ class Model_messages extends MY_Model
                     $result_array=$specialty_array;
                 }
             }
-            $this->db->select('specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('specialties', 'messages.speciality_id = specialties.specialty_id');
             $this->db->where('messages.message_from !=', $user);
@@ -157,7 +157,7 @@ class Model_messages extends MY_Model
             
             $result_array=array();
             
-            $this->db->select('students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,students.student_names,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('students', 'messages.message_from=students.student_id');
             $this->db->where('messages.message_from !=', $user);
@@ -167,7 +167,7 @@ class Model_messages extends MY_Model
 
             $result_array=$this->results($query);
             
-            $this->db->select('groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,groups.group_subject,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('groups', 'messages.group_id = groups.group_id');
             $this->db->where('messages.message_from !=', $user);
@@ -183,7 +183,7 @@ class Model_messages extends MY_Model
                     $result_array=$specialty_array;
                 }
             }
-            $this->db->select('specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
+            $this->db->select('messages.message_id,specialties.specialty_name,messages.message_text,messages.message_date,messages.group_id,messages.file_path');
             $this->db->from('messages');
             $this->db->join('specialties', 'messages.speciality_id = specialties.specialty_id');
             $this->db->where('messages.message_from !=', $user);

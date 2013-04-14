@@ -25,7 +25,7 @@ $(document).ready(function(){
         btn.button('loading');
         setTimeout(function () { 
             btn.button('reset');
-        }, 3000);
+        }, 15000);
        });
 
        if(typeof socket != 'undefined'){
@@ -40,11 +40,16 @@ $(document).ready(function(){
 	});
 
         $('body').on('click', '.button_msg', function () {
-            var myperson = $(this).data('sender');
+            var fromperson = $(this).data('sender');
+            var tocperson = $(this).data('receiver');
+            
             var mymess = $(this).data('message');
-            $('#m_sender').html(myperson);
+            var mymessid = $(this).data('message_id');
+            
+            $('#m_sender').html(fromperson);
+            $('#m_receiver').html(tocperson);
             $('#m_message').html(mymess);
-            $('#m_sender_name').val(myperson);
+            $('#m_sender_name').val(fromperson);
             $('#addBookDialog').modal('show');
         });
         
