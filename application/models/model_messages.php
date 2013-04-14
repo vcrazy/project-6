@@ -233,4 +233,19 @@ class Model_messages extends MY_Model
             
            return $result_array;
         }
+
+	public function get_last_messages()
+	{
+		$user = $this->session->userdata('user');
+
+		$this->db->select('*');
+		$this->db->from('messages');
+		$this->db->join('students', 'messages.message_from = students.student_id');
+		$this->db->where('message_to', $user['student_id']);
+		$this->db->order_by('message_id', 'desc');
+		$this->db->limit(10);
+		$query = $this->db->get();
+
+		return $this->results($query);
+	}
 }
