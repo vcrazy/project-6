@@ -78,48 +78,62 @@ class Messages extends MY_Controller
                     $data=array();
                     $data['date']=date("Y-m-d H:i:s");
                     $data['person_from']=$session['student_id'];
-                    $data['person_to']=$_POST['send_to_id'];
                     $data['message']=$_POST['InputMessage'];
+                    $data['person_to']=0;
                     
                     $data['is_group']=0;
                     if ( isset($_POST['is_it_group']) ) {
-                        $data['is_group']=$_POST['is_it_group'];
+                        if ($_POST['is_it_group']==1 ) {
+                            $data['is_group']=$_POST['send_to_id'];
+                        }
                     }
-                            
-                    if ( !($this->Model_validate->validate_student($_POST['send_to_id'])) ) {
-                        $data['person_to']=$_POST['send_to_id'];
+                    
+                    $data['is_speciality']=0;
+                    if ( $data['is_group']>0 ) {
+                        $user_speciality=$this->Model_user->get_speciality_by_id();
+                        var_dump( $user_speciality);
+                        var_dump( $_POST['inputPerson']);
+                        $specialty_subject= ltrim ($_POST['inputPerson'],'@');
+                        if ( strcmp($user_speciality,$specialty_subject)==0) {
+                            $data['is_group']=0;
+                            $data['is_speciality']=$_POST['send_to_id'];
+                        }
+                    } else {
+                        if ( !($this->Model_validate->validate_student($_POST['send_to_id'])) ) {
+                            $data['person_to']=$_POST['send_to_id'];
+                        }
                     }
 
                     if(!empty($_FILES))
                     {
-                            $this->load->helper('form');
+                        $this->load->helper('form');
 
-                            $config['upload_path'] = APPPATH . '../uploads/';
-                            $config['max_size']	= '2048';
-                            $config['allowed_types'] = '*';
-                            $config['encrypt_name'] = TRUE; // rename
+                        $config['upload_path'] = APPPATH . '../uploads/';
+                        $config['max_size']	= '2048';
+                        $config['allowed_types'] = '*';
+                        $config['encrypt_name'] = TRUE; // rename
 
-                            $this->load->library('upload', $config);
+                        $this->load->library('upload', $config);
 
-						$this->upload->do_upload();
-						$errors = $this->upload->display_errors();
-						if(empty($errors))
-						{
-							$file_data = $this->upload->data();
-							$data['file_path'] = 'uploads/' . $file_data['file_name'];
-						}
-					}
+                        $this->upload->do_upload();
+                        $errors = $this->upload->display_errors();
+                        if(empty($errors))
+                        {
+                                $file_data = $this->upload->data();
+                                $data['file_path'] = 'uploads/' . $file_data['file_name'];
+                        }
+                    }
                     
-					$result = $this->Model_messages->send($data);
+                    $result = $this->Model_messages->send($data);
 
-					if($result)
-					{
-						$this->data['sent_message'] = $this->Model_messages->send($data);
-						$this->data['sent_to_user_id'] = $data['person_to'];
-						$this->data['sent_message_text'] = $_POST['InputMessage'];
-						$user = $this->session->userdata('user');
-						$this->data['sent_from_names'] = $user['student_names'];
-					}
+                    if($result)
+                    {
+                            $this->data['sent_message'] = $result;//$this->Model_messages->send($data);
+                            $this->data['sent_to_user_id'] = $data['person_to'];
+                            $this->data['sent_message_text'] = $_POST['InputMessage'];
+                            $user = $this->session->userdata('user');
+                            $this->data['sent_from_names'] = $user['student_names'];
+                    }
 		}
             }
             $this->load_view();

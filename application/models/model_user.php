@@ -78,4 +78,20 @@ class Model_user extends MY_Model
             
             return $return_students;
         }
+        
+        public function get_speciality_by_id() {
+            $session=$this->session->userdata('user');
+            $speciality_id=$session['student_specialty_id'];
+            
+            $this->db->select('specialty_name');
+            $this->db->from('specialties');
+            $this->db->where('specialty_id', $speciality_id);
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                $row = $query->first_row();
+                return $row->specialty_name;
+            }
+            
+            return false;
+        }
 }
