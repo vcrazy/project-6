@@ -20,6 +20,8 @@ class Logout extends MY_Controller
 			$this->Model_facebook->destroy();
 		}
 
+		$this->session->sess_destroy();
+
 		// then go to the gome page
 		header("Location: /");
 

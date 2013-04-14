@@ -8,7 +8,7 @@
                     <p><?php echo $content_title; ?></p>
                 </div>
                 
-                <div class="white_back">
+                <div class="white_back content_container">
                     <?php include($view . '.php'); ?>
                 </div>
             </div>

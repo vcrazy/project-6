@@ -4,7 +4,7 @@
     <label class="control-label" for="inputPerson">До</label>
     <div class="controls">
       <?php if(isset($users_to_send)): ?>
-        <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4"/>
+        <input type="text" class="span4" style="margin: 0 auto;" id="inputPerson" name="inputPerson" data-provide="typeahead" data-items="4" value="<?php echo isset($preselect_user_names) ? htmlspecialchars($preselect_user_names) : ''; ?>" />
         <input type="hidden" id="send_to_id" name="send_to_id" value=""/>
         <input type="hidden" id="is_it_group" name="is_it_group" value=""/>
         <script type="text/javascript">

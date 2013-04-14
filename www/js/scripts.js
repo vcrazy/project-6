@@ -36,7 +36,7 @@ $(document).ready(function(){
        }
 
 	$('body').on('click', '.close_modal, .modal-header .close', function(){
-		$('.modal').remove();
+		$('.modal').hide();
 	});
 
         $('body').on('click', '.button_msg', function () {
