@@ -112,13 +112,21 @@ class Messages extends MY_Controller
                     
 					$result = $this->Model_messages->send($data);
 
-					if($result)
+					if($result && $data['person_to'])
 					{
-						$this->data['sent_message'] = $this->Model_messages->send($data);
+						$this->data['sent_message'] = TRUE;
 						$this->data['sent_to_user_id'] = $data['person_to'];
 						$this->data['sent_message_text'] = $_POST['InputMessage'];
 						$user = $this->session->userdata('user');
 						$this->data['sent_from_names'] = $user['student_names'];
+
+						$this->load->model('Model_notifier');
+						$this->Model_notifier->notify(
+							$data['person_to'], array(
+							'email' => 'Здравейте. Имате ново съобщение в Project 6.',
+							'topic' => 'Ново съобщение в Project 6',
+							'sms' => 'Zdraveite. Imate novo syobshtenie v Project 6.'
+						));
 					}
 		}
             }
