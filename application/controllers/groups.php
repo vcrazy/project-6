@@ -13,13 +13,15 @@ class Groups extends MY_Controller
 	public function group($group_id)
 	{
 		$this->data['content_title'] = 'Групи';
+                
+                $this->data['menu'] = "menu/menu";
+                $this->data['view'] = 'groups/group_messages';
 
 		$group = $this->Model_groups->get($group_id);
 		$messages = $this->Model_messages->get_group_messages($group_id);
-
-//		var_dump($group);
-//		var_dump($messages);
-
+                $this->data['all_messages_from_group']=$messages;
+                $this->data['all_groups']=$group;
 		$this->load_view();
+                
 	}
 }

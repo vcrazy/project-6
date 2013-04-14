@@ -18,9 +18,12 @@ class Model_messages extends MY_Model
 
 	public function get_group_messages($group_id)
 	{
-		$this->db->select('*');
+		$this->db->select('students.student_names,groups.group_subject,messages.*');
 		$this->db->from('messages');
-		$this->db->where('group_id', $group_id);
+                $this->db->join('students', 'messages.message_from=students.student_id');
+                $this->db->join('groups', 'messages.group_id=groups.group_id');
+		$this->db->where('messages.group_id', $group_id);
+                $this->db->where('messages.message_from >',0);
 		$query = $this->db->get();
 
 		return $this->results($query);
