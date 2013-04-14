@@ -29,11 +29,34 @@ class Model_messages extends MY_Model
         {
             $session=$this->session->userdata('user');
             $user=$session['student_id'];
-            $this->db->select('*');
+            
+            $result_array=array();
+            
+            $this->db->select('students.student_names,messages.message_text,messages.message_date,messages.group_id');
             $this->db->from('messages');
-            $this->db->where('message_from', $user);
+            $this->db->join('students', 'messages.message_to=students.student_id');
+            $this->db->where('messages.message_from', $user);
+            $this->db->where('messages.message_to >',0);
             $query = $this->db->get();
 
-            return $this->results($query);
+            $result_array=$this->results($query);
+            
+            $this->db->select('groups.group_subject,messages.message_text,messages.message_date,messages.group_id');
+            $this->db->from('messages');
+            $this->db->join('groups', 'messages.group_id = groups.group_id');
+            $this->db->where('messages.message_from', $user);
+            $this->db->where('messages.message_to >',0);
+            $query = $this->db->get();
+            
+            $specialty_array=$this->results($query);
+            if ( !empty($specialty_array) ) {
+                if (!empty($result_array)) {
+                    $result_array=array_merge($result_array,$specialty_array);
+                } else {
+                    $result_array=$specialty_array;
+                }
+            }
+            
+           return $result_array;
         }
 }
