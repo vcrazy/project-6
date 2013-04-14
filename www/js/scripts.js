@@ -4,10 +4,11 @@ $(document).ready(function(){
         $('#sent_messages_table').dataTable(
             {"bAutoWidth": false,
             "aoColumns": [
-                           { "sWidth": "20%" },
-                           { "sWidth": "20%" },
+                           { "sWidth": "15%" },
+                           { "sWidth": "15%" },
                            { "sWidth": "40%" },
-                           { "sWidth": "20%" }
+                           { "sWidth": "20%" },
+                           { "sWidth": "10%" }
                        ]
         });
 
