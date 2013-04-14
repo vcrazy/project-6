@@ -137,10 +137,17 @@ class Messages extends MY_Controller
 						$this->load->model('Model_notifier');
 						$this->Model_notifier->notify(
 							$data['person_to'], array(
-							'email' => 'Здравейте. Имате ново съобщение в Project 6.',
-							'topic' => 'Ново съобщение в Project 6',
-							'sms' => 'Zdraveite. Imate novo syobshtenie v Project 6.'
-						));
+								'email' => array(
+									'text' => 'Здравейте. Имате ново съобщение в Project 6.',
+									'topic' => 'Ново съобщение в Project 6'
+								),
+								'sms' => array(
+									'text' => 'Zdraveite. Imate novo syobshtenie v Project 6.',
+									'title' => 'Novo syobshtenie v Project 6',
+									'from' => 'Project 6'
+								)
+							)
+						);
 					}
 		}
             }
