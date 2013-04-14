@@ -6,15 +6,18 @@
     <h3>Съобщение</h3>
   </div>
   <div class="modal-body">
-    <p>От</p>
-    <input type="text" name="bookId" id="bookId" value=""/>
+    <p>От: <span style="font-size:20px;" id="m_sender"></span></p>
+    <p>До: <span style="font-size:20px;" id="m_receiver">Вас</span></p>
     
-    <p>От</p>
-    <input type="text" name="bookId" id="bookId" value=""/>
+    <p>Съобщение: <span style="font-size:20px;" id="m_sender"></span></p>
+    <form action="/" method="POST">
+        <input type="hidden" id="m_sender_name" name="m_sender_name" value=""/>
+        <button type="Submit" id="m_sender_name" name="m_sender_name" value="Изпрати"/>
+        <button type="button" class="close" data-dismiss="modal">Close</button>
+    </form>
+    
   </div>
 </div>
-
-
 
 <table id="sent_messages_table">
     <thead>
@@ -29,9 +32,9 @@
     <tbody>
         <?php foreach($all_new_messages as $message): ?>
         <tr>
-            <td>Теб</td>
             <?php if ( isset($message['student_names']) ): ?>
             <td><?php echo $message['student_names'];?></td>
+            <td>Теб</td>
             <td>
               <?php 
                 $short_mess=mb_substr($message['message_text'], 0,40);
@@ -44,11 +47,29 @@
             <td><?php echo $message['message_date'];?></td>
             <?php elseif ( isset($message['specialty_name']) ): ?>
             <td><?php echo $message['specialty_name'];?></td>
-            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...'?></td>
+            <td>Теб</td>
+            <td>
+                <?php
+                    $short_mess=mb_substr($message['message_text'], 0,40);
+                if ( strlen($message['message_text'])>40 ) {
+                    $short_mess.='...';
+                }
+                echo '<a data-message="'.$message['message_text'].'" data-sender="'.$message['specialty_name'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                ?>
+            </td>
             <td><?php echo $message['message_date'];?></td>
             <?php else: ?>
             <td><?php echo $message['group_subject'];?></td>
-            <td><?php echo mb_substr($message['message_text'], 0,40); if (strlen($message['message_text'])>40) echo '...'?></td>
+            <td>Теб</td>
+            <td>
+                <?php
+                        $short_mess=mb_substr($message['message_text'], 0,40);
+                    if ( strlen($message['message_text'])>40 ) {
+                        $short_mess.='...';
+                    }
+                    echo '<a data-message="'.$message['message_text'].'" data-sender="'.$message['group_subject'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                ?>
+            </td>
             <td><?php echo $message['message_date'];?></td>
             <?php endif; ?>
             <td><?php if (!empty($message['file_path'])) {echo '<a href="#"><img src="/img/appbar.disk.download.png" alt="Има прикачен файл"/></a>';}?></td>
