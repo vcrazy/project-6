@@ -31,22 +31,43 @@ class Model_messages extends MY_Model
 
 	public function get_specialty_messages($sp_id)
 	{
-		$this->db->select('*');
-		$this->db->from('messages');
-		if(!$sp_id) // to administration
-		{
-			$this->db->where('message_to', 0);
-			$this->db->where('group_id', 0);
-			$this->db->where('speciality_id', 0);
-		}
-		else
-		{
-			$this->db->where('speciality_id', $sp_id);
-		}
+//		$this->db->select('students.student_names,specialties.specialty_name,messages.*');
+//		$this->db->from('messages');
+//                $this->db->join('students', 'messages.message_from=students.student_id');
+//		if(!$sp_id) // to administration
+//		{
+//                $this->db->select('students.student_names,specialties.specialty_name,messages.*');
+//                $this->db->from('messages');
+//                $this->db->join('students', 'messages.message_from=students.student_id');
+//                $this->db->where('messages.message_to', 0);
+//                $this->db->where('messages.group_id', 0);
+//                $this->db->where('messages.speciality_id', 0);
+//		}
+//		else
+//		{       
+                $this->db->select('students.student_names,specialties.specialty_name,messages.*');
+                $this->db->from('messages');
+                $this->db->join('students', 'messages.message_from=students.student_id');
+                $this->db->join('specialties', 'messages.speciality_id=specialties.specialty_id');
+                $this->db->where('messages.speciality_id', $sp_id);
+//		}
 		$query = $this->db->get();
 
 		return $this->results($query);
 	}
+        
+        public function get_specialty_adm_messages() {
+            $this->db->select('students.student_names,messages.*');
+            $this->db->from('messages');
+            $this->db->join('students', 'messages.message_from=students.student_id');
+            $this->db->where('messages.message_to', 0);
+            $this->db->where('messages.group_id', 0);
+            $this->db->where('messages.speciality_id', 0);
+            $this->db->where('messages.message_from !=', 0);
+            $query = $this->db->get();
+            
+            return $this->results($query);
+        }
         
         public function get_sent_messages()
         {
