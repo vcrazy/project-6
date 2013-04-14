@@ -1,6 +1,9 @@
 .our_header {
-    background: #000;
+    /*background: #000;*/
     color: #FFF;
+    background: url('/img/header-6messenger.png') no-repeat center  center; !important;
+    height: 80px !important;
+    /*no-repeat right -150px  center;*/
 }
 
 .remove_margin {
