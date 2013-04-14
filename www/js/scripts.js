@@ -38,4 +38,20 @@ $(document).ready(function(){
 	$('body').on('click', '.close_modal, .modal-header .close', function(){
 		$('.modal').remove();
 	});
+        
+//        $('body').on("click",'.button_msg', function () {
+//            var myBookId = $(this).data('id');
+//            $(".modal-body #bookId").val( myBookId );
+//            $('#addBookDialog').modal('show');
+//       });
+
+        $('.button_msg').click( function () {
+                    var myBookId = $(this).data('id');
+                    $(".modal-body #bookId").val( myBookId );
+                    $('#addBookDialog').modal('show');
+               });
+        
+        
+        
+        
 });
