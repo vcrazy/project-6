@@ -8,10 +8,10 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner remove_border">
         <ul class="nav nav-list">
-            <li><a href="#">Изпрати</a></li>
-            <li><a href="#">Непрочетени</a></li>
-            <li><a href="#">Прочетени</a></li>
-            <li><a href="#">Изпратени</a></li>
+            <li><a href="/messages/send">Изпрати</a></li>
+            <li><a href="/messages/inbox">Непрочетени</a></li>
+            <li><a href="/messages/read">Прочетени</a></li>
+            <li><a href="/messages/sent">Изпратени</a></li>
           </ul>
       </div>
     </div>

@@ -46,8 +46,10 @@ $(document).ready(function(){
 //       });
 
         $('.button_msg').click( function () {
-                    var myBookId = $(this).data('id');
-                    $(".modal-body #bookId").val( myBookId );
+                    var myperson = $(this).data('sender');
+                    var mymess = $(this).data('message');
+                    alert(myperson);
+                    alert(mymess);
                     $('#addBookDialog').modal('show');
                });
         

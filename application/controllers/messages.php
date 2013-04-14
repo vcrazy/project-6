@@ -17,11 +17,11 @@ class Messages extends MY_Controller
             $this->load_view();
         }
         
-        public function unread() {
+        public function read() {
             $this->data['menu'] = "menu/menu";
             $this->data['view'] = 'messages/unread_messages';
             $this->load->model('Model_messages');
-            $this->data['all_unread_messages']=$this->Model_messages->get_unread_messages();
+            $this->data['all_unread_messages']=$this->Model_messages->get_read_messages();
             $this->load_view();
         }
         
