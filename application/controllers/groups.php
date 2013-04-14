@@ -12,6 +12,8 @@ class Groups extends MY_Controller
 
 	public function group($group_id)
 	{
+                $session=$this->session->userdata('user');
+                $iam=$session['student_id'];
 		$this->data['content_title'] = 'Групи';
                 
                 $this->data['menu'] = "menu/menu";
@@ -21,6 +23,7 @@ class Groups extends MY_Controller
 		$messages = $this->Model_messages->get_group_messages($group_id);
                 $this->data['all_messages_from_group']=$messages;
                 $this->data['all_groups']=$group;
+                $this->data['i_am']=$iam;
 		$this->load_view();
                 
 	}

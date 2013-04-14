@@ -1,4 +1,4 @@
-<?php if(isset($all_messages_from_group) && (isset($all_groups)) && !empty($all_messages_from_group)): ?>
+<?php if(isset($all_messages_from_group) && (isset($all_groups)) && (isset($i_am)) && !empty($all_messages_from_group)): ?>
 
 <div class="modal hide" id="addBookDialog">
  <div class="modal-header">
@@ -6,8 +6,8 @@
     <h3>Съобщение</h3>
   </div>
   <div class="modal-body">
-    <p>От: <span style="font-size:20px;" id="m_sender"></span></p>
-    <p>До: <span style="font-size:20px;" id="m_receiver">Вас</span></p>
+    <p>От: <span style="font-size:20px;" id="m_receiver"></span></p>
+    <p>До: <span style="font-size:20px;" id="m_sender"></span></p>
     
     <p>Съобщение:<br/> <span style="font-size:20px;" id="m_message"></span></p>
     <form action="/messages/send" method="GET">
@@ -33,7 +33,16 @@
         <tr>
             <?php if ( isset($message['student_names']) ): ?>
 
-            <td><?php echo $message['student_names'];?></td>
+            
+            <td>
+                <?php 
+                    if ($i_am==$message['message_from']) {
+                        echo 'Вас';
+                    } else {
+                        echo $message['student_names'];
+                    }
+                ?>
+            </td>
             <td><?php echo $message['group_subject'];?></td>
             <td>
               <?php 
@@ -41,7 +50,7 @@
                 if ( strlen($message['message_text'])>40 ) {
                     $short_mess.='...';
                 }
-                echo '<a data-message="'.$message['message_text'].'" data-receiver="'.$message['group_subject'].'" data-sender="'.$message['student_names'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
+                echo '<a data-message="'.$message['message_text'].'" data-receiver="'.$message['student_names'].'" data-sender="@'.$message['group_subject'].'" title="View full message" class="open-AddBookDialog button_msg" href="#addBookDialog" data-toggle="modal">'.$short_mess.'</a>';
               ?>
             </td>
             <td><?php echo $message['message_date'];?></td>

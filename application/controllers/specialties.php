@@ -12,6 +12,8 @@ class Specialties extends MY_Controller
 
 	public function specialty($sp_id)
 	{
+                $session=$this->session->userdata('user');
+                $iam=$session['student_id'];
                 $this->data['menu'] = "menu/menu";
                 $message=array();
 		if($sp_id)
@@ -32,6 +34,7 @@ class Specialties extends MY_Controller
                 
                 $this->data['all_messages_from_specialty']=$messages;
                 $this->data['all_specialties']=$specialty;
+                $this->data['i_am']=$iam;
 //		var_dump($messages);
 
 		$this->load_view();
